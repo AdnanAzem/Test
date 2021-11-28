@@ -39,10 +39,14 @@ void isThereConnection(){
     int x,y;
     scanf("%d%d",&x, &y);
     if(adj[x][y] != 0){
+        printf("True\n")
+    }
+    else if (findPath(x,y) != 0)
+    {
         printf("True\n");
     }
     else{
-        printf("False\n");
+        printf("Flase\n");
     }
 }
 
@@ -101,7 +105,7 @@ void Dijkstra( int s)
         }
 }/*End of Dijkstra( )*/
 
-void findPath(int s, int v )
+int findPath(int s, int v )
 {
         int i,u;
         int path[N];          /*stores the shortest path*/
@@ -120,7 +124,8 @@ void findPath(int s, int v )
         count++;
         path[count]=s;
 
-        printf("%d\n", shortdist);
+        //printf("%d\n", shortdist);
+        return shortdist;
 }/*End of findPath()*/
 
 void shortPath(){
