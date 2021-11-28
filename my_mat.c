@@ -20,20 +20,13 @@ int status[N];
 
 void buildGraph()
 {
+        int i, j;
+	for (i = 0; i < N; i++) {
+		for (j = 0; j < N; j++) {
+			scanf("%d", &adj[i][j]);
+		}
+	}
 
-        adj = (int**)malloc(N * sizeof(int*));
-    for(int i = 0; i < N; i++)
-    {
-        adj[i] = (int*)malloc(N * sizeof(int));
-    }
-
-    for(int i = 0; i < N; i++)
-    {
-        for(int j = 0; j < N; j++)
-        {
-            scanf("%d", &adj[i][j]);
-        }
-    }
 }
 
 /*
