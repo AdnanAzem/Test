@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
+
 #define N 10
 #define MAX 100
 #define TEMP 0
@@ -35,20 +36,21 @@ void buildGraph()
     }
 }
 
+/*
+
 void isThereConnection(){
     int x,y;
     scanf("%d%d",&x, &y);
     if(adj[x][y] != 0){
-        printf("True\n")
-    }
-    else if (findPath(x,y) != 0)
-    {
         printf("True\n");
     }
     else{
-        printf("Flase\n");
+        printf("False\n");
     }
 }
+*/
+
+
 
 int min_temp( )
 {
@@ -105,6 +107,7 @@ void Dijkstra( int s)
         }
 }/*End of Dijkstra( )*/
 
+
 int findPath(int s, int v )
 {
         int i,u;
@@ -126,7 +129,10 @@ int findPath(int s, int v )
 
         //printf("%d\n", shortdist);
         return shortdist;
+        
 }/*End of findPath()*/
+
+
 
 void shortPath(){
     int x,y;
@@ -140,4 +146,22 @@ void shortPath(){
         findPath(x,y);
     }
   
+}
+
+void isThereConnection(){
+    int x,y;
+    scanf("%d%d",&x, &y);
+    Dijkstra(x);
+    if (adj[x][y] != 0)
+    {
+        printf("True\n");
+    }
+    else{
+        if(findPath(x,y) != 0){
+        printf("True\n");
+    }
+    else{
+        printf("False\n");
+    }
+    }
 }
