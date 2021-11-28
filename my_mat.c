@@ -143,7 +143,7 @@ void shortPath(){
         printf("-1\n");
     }
     else{
-        findPath(x,y);
+        printf("%d",findPath(x,y));
     }
   
 }
