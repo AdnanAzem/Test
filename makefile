@@ -12,3 +12,4 @@ main.o: main.c my_mat.h
 .PHONY: clean#.PHONY means that clean is not a file.
 clean:
 	rm -f *.o *.a  connections 
+
