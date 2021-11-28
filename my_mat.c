@@ -157,7 +157,7 @@ void shortPath(){
 
     //Dijkstra(x);
 
-    if((x == y) || (adj[x][y] != 0)){
+    if((x == y) || (adj[x][y] == 0)){
         printf("-1\n");
     }
     else{
