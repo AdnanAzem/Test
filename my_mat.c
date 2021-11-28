@@ -1,8 +1,9 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 
-
+void Dijkstra(int s);
 #define N 10
 #define MAX 100
 #define TEMP 0
@@ -10,13 +11,34 @@
 #define infinity 9999
 #define NIL -1
 
-//int adj[N][N];
-int** adj;
+int adj[N][N];
+//int** adj;
 int predecessor[N];   /*predecessor of each vertex in shortest path*/
 int pathLength[N];
 int status[N];
 
 //int mat[N][N];
+int min(int a, int b) {
+	if (a<b) return a;
+	else 
+		return b;
+}
+
+void floydWarshalle(int mat[][N]) {
+	
+	for (int k = 0; k < N; k++) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (mat[i][j]&&mat[i][k] != 0 &&mat[k][j] != 0) {
+					mat[i][j] = min(mat[i][j], mat[i][k] + mat[k][j]);
+				}
+				else if(i!=j&&mat[i][j]==0&&mat[i][k]!=0&&mat[k][j]!=0){
+                        mat[i][j]=mat[i][k]+mat[k][j];
+				}
+			}
+		}
+	}
+}
 
 void buildGraph()
 {
@@ -26,6 +48,8 @@ void buildGraph()
 			scanf("%d", &adj[i][j]);
 		}
 	}
+
+    floydWarshalle(adj);
 
 }
 
@@ -129,8 +153,10 @@ int findPath(int s, int v )
 
 void shortPath(){
     int x,y;
-    scanf("%d%d",&x,&y);
-    Dijkstra(x);
+    scanf("%d",&x);
+    scanf("%d",&y);
+
+    //Dijkstra(x);
 
     if(x == y){
         printf("-1\n");
@@ -143,8 +169,10 @@ void shortPath(){
 
 void isThereConnection(){
     int x,y;
-    scanf("%d%d",&x, &y);
-    Dijkstra(x);
+    scanf("%d",&x);
+    scanf("%d",&y);
+    //Dijkstra(x);
+
     if (adj[x][y] != 0)
     {
         printf("True\n");
