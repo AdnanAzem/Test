@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -162,7 +161,8 @@ void shortPath(){
         printf("-1\n");
     }
     else{
-        printf("%d\n",findPath(x,y));
+            printf("%d\n",adj[x][y]);
+       // printf("%d\n",findPath(x,y));
     }
   
 }
@@ -177,12 +177,12 @@ void isThereConnection(){
     {
         printf("True\n");
     }
-    else{
-        if(findPath(x,y) != 0){
-        printf("True\n");
-    }
+   // else{
+       // if(findPath(x,y) != 0){
+       // printf("True\n");
+   // }
     else{
         printf("False\n");
     }
-    }
+   // }
 }
