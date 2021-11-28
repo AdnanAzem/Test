@@ -1,18 +1,15 @@
-FLAGS= -Wall -g
-
-all: my_mat.a connections 
-
-my_mat.a: my_mat.o
+all:  connections
+connections: main.o my_mat.a my_mat.h
+	gcc -Wall -g -o connections main.o my_mat.a
+my_mat:my_mat.a
+my_mat.a: my_mat.o 
 	ar -rcs my_mat.a my_mat.o
-connections:main.o my_mat.o
-	gcc $(FLAGS) -o connections main.o my_mat.o
-main.o:main.c my_mat.h
-	gcc $(FLAGS) -c main.c
-
 my_mat.o: my_mat.c my_mat.h
-	gcc $(FLAGS) -c my_mat.c
+	gcc -Wall -g -c my_mat.c 
+main.o: main.c my_mat.h
+	gcc -Wall -g -c main.c 
 
-.PHONY: clean all
+.PHONY: clean#.PHONY means that clean is not a file.
 clean:
-	rm -f *.o *.a connections 
+	rm -f *.o *.a  connections 
 
