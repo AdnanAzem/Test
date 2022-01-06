@@ -1,37 +1,36 @@
 #include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include "algo.h"
-
-int main(){
-    char ch;
-    int k;
-    pnode head = NULL;
-    int end_of_file = 0;
-    while(end_of_file!=EOF){
-        end_of_file = scanf("%c", &ch);
-        if (ch == 'A'){
-            deleteGraph_cmd(&head);
-            scanf("%d", &k);
-            //head = allocate_graph(k);
+#include "graph.h"
+int main()
+{
+    pnode temp = NULL;
+    pnode *head = &temp;
+    char input = '\0';
+    while (scanf("%c", &input) != EOF)
+    {
+        if (input == 'A')
+        {
+            build_graph_cmd(head);
         }
-        if (ch == 'n'){
-            build_graph_cmd(&head);
+        else if (input == 'B')
+        {
+            insert_node_cmd(head);
         }
-        if (ch == 'B'){
-            insert_node_cmd(&head);
+        else if (input == 'D')
+        {
+            delete_node_cmd(head);
         }
-        if (ch =='S'){
-            shortsPath_cmd(head);
+        else if (input == 'S')
+        {
+            int src = -1, dest = -1;
+            scanf("%d %d", &src, &dest);
+            int dis = shortsPath_cmd2(*head, src, dest);
+            printf("Dijsktra shortest path: %d \n", dis);
         }
-        if (ch =='D'){
-            delete_node_cmd(&head);
+        else if (input == 'T') {
+            int weight = TSP_cmd(*head);
+            printf("TSP shortest path: %d \n", weight);
         }
-        if (ch =='T'){
-            TSP_cmd(head);
-        }
-        
     }
-    deleteGraph_cmd(&head);
+    deleteGraph_cmd(head);
     return 0;
 }
