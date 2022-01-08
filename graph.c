@@ -111,6 +111,7 @@ void printGraph_cmd(pnode head)
         nodeIndex = nodeIndex->next;
     }
 }
+/*
 void deleteGraph_cmd(pnode *head)
 {
     pnode nodeIndex = *head;
@@ -129,6 +130,26 @@ void deleteGraph_cmd(pnode *head)
     }
     *head = NULL;
 }
+*/
+
+void deleteGraph_cmd(pnode* head) {
+	pnode current = *head;
+	while (current != NULL) {
+		pedge signaledge = current->edges;
+		while (signaledge != NULL) {
+			pedge Redge = signaledge->next;
+			free(signaledge);
+			signaledge = Redge;
+
+		}
+		pnode Rnode = current;
+		current = current->next;
+		free(Rnode);
+
+	}
+	head = NULL;
+}
+
 void delete_node_cmd(pnode *head)
 {
     int key = -1;
