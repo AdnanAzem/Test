@@ -5,6 +5,24 @@
 #include <math.h>
 #include <limits.h>
 
+void deleteGraph_cmd(pnode *head) {
+	pnode current = *head;
+	pnode next;
+	while (current != NULL) {
+		pedge signaledge = current->edges;
+		while (signaledge != NULL) {
+			pedge Redge = signaledge->next;
+			free(signaledge);
+			signaledge = Redge;
+			
+		}
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*head = NULL;
+}
+
 void build_graph_cmd(pnode *head)
 {
     deleteGraph_cmd(head);
@@ -131,24 +149,6 @@ void deleteGraph_cmd(pnode *head)
 }
 */
 
-void deleteGraph_cmd(pnode *head) {
-	pnode current = *head;
-	pnode next;
-	while (current != NULL) {
-		pedge signaledge = current->edges;
-		while (signaledge != NULL) {
-			pedge Redge = signaledge->next;
-			free(signaledge);
-			signaledge = Redge;
-			
-		}
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	*head = NULL;
-	
-}
 
 
 void delete_node_cmd(pnode *head)
