@@ -253,7 +253,7 @@ void setWeight(pnode *head, int key, int weight) {
 }
 
 
-/*
+
 void shortsPath_cmd(pnode head) {
 	int src, dest;
 	scanf("%d", &src);
@@ -294,7 +294,7 @@ void shortsPath_cmd(pnode head) {
 	}
 
 }
-*/
+
 /*
 int shortsPath_cmd(pnode head,int src ,int dest) {
 	pnode temp = head;
