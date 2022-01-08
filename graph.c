@@ -151,10 +151,24 @@ void deleteGraph_cmd(pnode *head) {
 }
 */
 
-void deleteGraph_cmd(pnode *head) {
-    while (*head != NULL) {
-        delete_node_cmd(head);
+void deleteGraph_cmd(pnode *head)//done 
+{// if there was a graph before -delete 
+    pnode p = *head;
+    while(p)
+    {
+        pnode temp = p;
+        p= temp->next;
+        pedge e =temp->edges;
+        while(e)
+        {
+            pedge t = e;
+            e =t->next;
+            free(t);
+        }
+        free(temp);
     }
+    *head=NULL;
+    // printf("DONE");
 }
 
 void delete_node_cmd(pnode *head)
