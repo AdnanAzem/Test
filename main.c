@@ -27,8 +27,10 @@ int main()
             printf("Dijsktra shortest path: %d \n", dis);
         }
         else if (input == 'T') {
-            int weight = TSP_cmd(*head);
-            printf("TSP shortest path: %d \n", weight);
+            //int weight = TSP_cmd(*head);
+            //printf("TSP shortest path: %d \n", weight);
+            //TSP_cmd(*head);
+             tsp(head);
         }
     }
     deleteGraph_cmd(head);
