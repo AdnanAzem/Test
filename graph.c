@@ -130,7 +130,7 @@ void deleteGraph_cmd(pnode *head)
     *head = NULL;
 }
 */
-
+/*
 void deleteGraph_cmd(pnode *head) {
 	pnode current = *head;
 	pnode next;
@@ -149,7 +149,13 @@ void deleteGraph_cmd(pnode *head) {
 	*head = NULL;
 	
 }
+*/
 
+void deleteGraph_cmd(pnode *head) {
+    while (*head != NULL) {
+        delete_node_cmd(head);
+    }
+}
 
 void delete_node_cmd(pnode *head)
 {
